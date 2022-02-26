@@ -9,8 +9,8 @@ import (
 
 var api_key = "931461e741abc95aba1f6fe49fef306f"
 var api_sec = "b68203de996c0e0cad617ce124b64a20"
-var auth_token = ""
-var session_key = ""
+var auth_token = "6mTc2F48PCUusn3VMr70_SVm6pwJieQN"
+var session_key = "mwyurvx0Bv3pdHgFZqrMw8oDsJkQoyx3"
 
 type lastfm_token struct {
 	Token string `json:"token"`
