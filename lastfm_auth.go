@@ -20,7 +20,9 @@ func lastfm_auth() {
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body) // response body is []byte
-	fmt.Println(string(body))
+	if err != nil {
+		fmt.Println("Can not read response body")
+	}
 
 	var result lastfm_token
 	if err := json.Unmarshal(body, &result); err != nil { // Parse []byte to the go struct pointer
