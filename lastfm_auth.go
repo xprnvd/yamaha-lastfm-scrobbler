@@ -1,4 +1,4 @@
-package lastfm_auth
+package main
 
 import (
 	"encoding/json"
