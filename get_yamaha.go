@@ -30,7 +30,7 @@ type Response struct {
 }
 
 //function to handle status request from yamaha
-func yamaha_request() {
+func get_yamaha() {
 	resp, err := http.Get("http://192.168.0.243:80/YamahaExtendedControl/v1/netusb/getPlayInfo")
 	if err != nil {
 		fmt.Println("No response from request")
@@ -42,9 +42,9 @@ func yamaha_request() {
 	}
 
 	var result Response
-	if err := json.Unmarshal(body, &result); err != nil { // Parse []byte to the go struct pointer
+	if err := json.Unmarshal(body, &result); err != nil {
 		fmt.Println("Can not unmarshal JSON")
 	}
-
-	fmt.Println(result.Artist, result.Album, result.Track, result.PlayTime)
+	//fmt.Println(string(body))
+	fmt.Println("Current playback from Yamaha: ", result.Artist, result.Album, result.Track, result.PlayTime)
 }
