@@ -74,5 +74,5 @@ func lastfm_auth() {
 
 func main() {
 	yamaha_request()
-
+	p()
 }
