@@ -8,12 +8,20 @@ import (
 )
 
 var api_key = "931461e741abc95aba1f6fe49fef306f"
-var api_sig = "b68203de996c0e0cad617ce124b64a20"
-var auth_token = "1RMc0gtfqp6PLTsMS1tX9ibPgsYqnVPT"
+var api_sec = "b68203de996c0e0cad617ce124b64a20"
+var auth_token = ""
 var session_key = ""
 
 type lastfm_token struct {
 	Token string `json:"token"`
+}
+
+type lastfm_session struct {
+	Session struct {
+		Name       string `json:"name"`
+		Key        string `json:"key"`
+		Subscriber int    `json:"subscriber"`
+	} `json:"session"`
 }
 
 func get_auth_token() {
@@ -39,7 +47,7 @@ func get_authorization() {
 }
 
 func get_session() {
-	resp, err := http.Get("http://ws.audioscrobbler.com/2.0/?method=auth.getSession&api_key=" + api_key + "&token=" + auth_token + "&api_sig=" + api_sig + "&format=json")
+	resp, err := http.Get("http://ws.audioscrobbler.com/2.0/?method=auth.getSession&api_key=" + api_key + "&token=" + auth_token + "&format=json&api_sig=" + api_sig)
 	if err != nil {
 		fmt.Println("No response from request")
 	}
@@ -48,6 +56,11 @@ func get_session() {
 	if err != nil {
 		fmt.Println("Can not read response body")
 	}
+	var result lastfm_session
+	if err := json.Unmarshal(body, &result); err != nil { // Parse []byte to the go struct pointer
+		fmt.Println("Can not unmarshal JSON")
+	}
+	session_key = result.Session.Key
+	fmt.Println(string(session_key))
 
-	fmt.Println(string(body))
 }

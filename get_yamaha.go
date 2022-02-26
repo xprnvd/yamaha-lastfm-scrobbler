@@ -46,5 +46,5 @@ func get_yamaha() {
 		fmt.Println("Can not unmarshal JSON")
 	}
 	//fmt.Println(string(body))
-	fmt.Println("Current playback from Yamaha: ", result.Artist, result.Album, result.Track, result.PlayTime)
+	fmt.Println("\nCurrent playback from Yamaha: ", result.Artist, result.Album, result.Track, result.PlayTime)
 }
