@@ -7,7 +7,6 @@ import (
 	"net/http"
 )
 
-// Response is the struct that will be unmarshalled from the JSON response
 type Response struct {
 	ResponseCode     int      `json:"response_code"`
 	Input            string   `json:"input"`
@@ -29,7 +28,9 @@ type Response struct {
 	ShuffleAvailable []string `json:"shuffle_available"`
 }
 
-//function to handle status request from yamaha
+var artist = ""
+var track = ""
+
 func get_yamaha() {
 	resp, err := http.Get("http://192.168.0.243:80/YamahaExtendedControl/v1/netusb/getPlayInfo")
 	if err != nil {
@@ -45,6 +46,6 @@ func get_yamaha() {
 	if err := json.Unmarshal(body, &result); err != nil {
 		fmt.Println("Can not unmarshal JSON")
 	}
-	//fmt.Println(string(body))
-	fmt.Println("\nCurrent playback from Yamaha: ", result.Artist, result.Album, result.Track, result.PlayTime)
+	artist = result.Artist
+	track = result.Track
 }

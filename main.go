@@ -2,7 +2,11 @@ package main
 
 import (
 	"fmt"
+	"strconv"
+	"time"
 )
+
+var nowtime = strconv.Itoa(int(time.Now().Unix()))
 
 func main() {
 
@@ -17,16 +21,20 @@ func main() {
 			var input string
 			fmt.Scanln(&input)
 			if input == "yes" {
-				get_sig()
+				get_session_sig()
 				get_session()
 			} else {
 				fmt.Println("Exiting...")
 			}
 
 		}
-	} else {
-		get_sig()
+	} else if session_key == "" {
+		get_session_sig()
 		get_session()
+	} else {
+		get_scrobbler_sig()
+		send_scrobbler()
 
 	}
+
 }
