@@ -13,8 +13,8 @@ func GetMD5Hash(text string) string {
 	return hex.EncodeToString(hasher.Sum(nil))
 }
 
-var api_sig = ""
-var sk_sig = ""
+var api_sig string
+var sk_sig string
 
 func get_session_sig() {
 	var hash = "api_key" + api_key + "methodauth.getSessiontoken" + auth_token + api_sec

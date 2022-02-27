@@ -9,10 +9,10 @@ import (
 	"strings"
 )
 
-var api_key = os.Args[2]
-var api_sec = os.Args[3]
-var auth_token = ""
-var session_key = ""
+var auth_token string
+var session_key string
+var api_key string
+var api_sec string
 
 type lastfm_token struct {
 	Token string `json:"token"`

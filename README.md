@@ -18,3 +18,8 @@ IP address of MusicCast server, LastFM API key pair generation and authorization
 <https://www.last.fm/api/account/create>
 
 <https://www.last.fm/api/scrobbling>
+
+## Build
+
+After installing go, run the following command to build the application inside the repo directory:
+```go build -o yls src/*.go```

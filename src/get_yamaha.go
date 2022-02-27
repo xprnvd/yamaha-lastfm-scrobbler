@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"os"
 )
 
 type Response struct {
@@ -29,11 +28,12 @@ type Response struct {
 	ShuffleAvailable []string `json:"shuffle_available"`
 }
 
-var artist = ""
-var track = ""
-var ip = os.Args[1]
+var artist string
+var track string
+var ip string
 
 func get_yamaha() {
+
 	resp, err := http.Get("http://" + ip + "/YamahaExtendedControl/v1/netusb/getPlayInfo")
 	if err != nil {
 		fmt.Println("No response from request")
