@@ -2,7 +2,7 @@
 
 ## What
 
-Reads DLNA playback by making request to MusicCast server, and sends scrobbing data to LastFM account.
+Reads DLNA playback by making request to MusicCast server, and sends scrobbing data to LastFM account with minimal stdout.
 
 ## Why
 
@@ -24,3 +24,7 @@ Documentation on lastfm api: <https://www.last.fm/api/scrobbling>
 
 After installing go, run the following command to build the application inside the repo directory:
 ```go build -o yls src/*.go```
+
+
+API key 	4f5f0f0ae75b7b6c9c091dc6be31c1c5
+Shared secret 	e1afe1329d5a054929e1eb3a1b8f6835
