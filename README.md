@@ -1,15 +1,19 @@
 # Yamaha MusicCast LastFM DLNA Scrobber in GoLang
 
-## What:
+## What
+
 Reads DLNA playback by making request to MusicCast server, and sends scrobbing data to LastFM account.
 
-## Why:
+## Why
+
 I use plex for my music, and use it's last.fm integration for music discovery. For MusicCast, I use it's DLNA server, which does not have last.fm integration. So I need to integrate the DLNA player with my last.fm account.
 
-## How:
-Current playing artist and track collection happens from MusicCast server. The application then connects to LastFM API via api.last.fm, and sends scrobble data. 
+## How
 
-### Required interaction:
-IP address of MusicCast server, LastFM API key pair generation and authorization. 
-https://www.last.fm/api/account/create
-https://www.last.fm/api/scrobbling
+Current playing artist and track collection happens from MusicCast server. The application then connects to LastFM API via api.last.fm, and sends scrobble data.
+
+### Required interaction
+
+IP address of MusicCast server, LastFM API key pair generation and authorization.
+<https://www.last.fm/api/account/create>
+<https://www.last.fm/api/scrobbling>

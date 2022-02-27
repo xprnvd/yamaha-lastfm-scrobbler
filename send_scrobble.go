@@ -7,9 +7,11 @@ import (
 	"net/url"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func send_scrobbler() {
+	var nowtime = strconv.Itoa(int(time.Now().Unix()))
 	endpoint := "http://ws.audioscrobbler.com/2.0/"
 	data := url.Values{}
 	data.Set("api_key", api_key)

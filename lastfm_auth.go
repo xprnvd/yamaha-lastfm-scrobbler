@@ -62,5 +62,4 @@ func get_session() {
 	}
 	session_key = result.Session.Key
 	fmt.Println(string(session_key))
-
 }

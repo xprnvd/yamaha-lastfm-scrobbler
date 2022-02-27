@@ -2,16 +2,10 @@ package main
 
 import (
 	"fmt"
-	"strconv"
 	"time"
 )
 
-var nowtime = strconv.Itoa(int(time.Now().Unix()))
-
 func main() {
-
-	get_yamaha()
-
 	if auth_token == "" {
 		if session_key == "" {
 			get_auth_token()
@@ -26,15 +20,19 @@ func main() {
 			} else {
 				fmt.Println("Exiting...")
 			}
-
 		}
 	} else if session_key == "" {
 		get_session_sig()
 		get_session()
 	} else {
-		get_scrobbler_sig()
-		send_scrobbler()
-
+		for {
+			get_yamaha()
+			track_check()
+			if track_changed {
+				get_scrobbler_sig()
+				send_scrobbler()
+			}
+			time.Sleep(time.Minute * 1)
+		}
 	}
-
 }
