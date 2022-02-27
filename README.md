@@ -20,7 +20,26 @@ Create api credentials: <https://www.last.fm/api/account/create>
 
 Documentation on lastfm api: <https://www.last.fm/api/scrobbling>
 
-## Build
+## Build & Run
 
-After installing go, run the following command to build the application inside the repo directory:
+After installing go, download the release or run the following command to build from source:
 ```go build -o yls src/*.go```
+
+Run with tmux or zellij for a detached session
+
+## Output
+
+```txt
+[host ~]# yamaha-lastfm-scrobbler/bin/yls 
+IP Address: 192.168.0.243
+API Key: xxxx
+API Secret: xxxx
+
+Please go to http://www.last.fm/api/auth/?api_key=xxxx&token=xxxx to authorize this app
+
+Once authorized type 'yes' to continue, or 'no' to exit
+
+yes
+
+Constant checks every 60 Seconds. No further output except for errors. Review activity on last.fm console
+```
