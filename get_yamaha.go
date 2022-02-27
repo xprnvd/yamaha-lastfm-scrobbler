@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"os"
 )
 
 type Response struct {
@@ -30,9 +31,10 @@ type Response struct {
 
 var artist = ""
 var track = ""
+var ip = os.Args[1]
 
 func get_yamaha() {
-	resp, err := http.Get("http://192.168.0.243:80/YamahaExtendedControl/v1/netusb/getPlayInfo")
+	resp, err := http.Get("http://" + ip + "/YamahaExtendedControl/v1/netusb/getPlayInfo")
 	if err != nil {
 		fmt.Println("No response from request")
 	}

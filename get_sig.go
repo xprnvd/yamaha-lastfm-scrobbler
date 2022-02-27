@@ -3,7 +3,6 @@ package main
 import (
 	"crypto/md5"
 	"encoding/hex"
-	"fmt"
 	"strconv"
 	"time"
 )
@@ -20,7 +19,6 @@ var sk_sig = ""
 func get_session_sig() {
 	var hash = "api_key" + api_key + "methodauth.getSessiontoken" + auth_token + api_sec
 	api_sig = GetMD5Hash(hash)
-	fmt.Println(string("Api Sig: " + api_sig))
 }
 
 func get_scrobbler_sig() {

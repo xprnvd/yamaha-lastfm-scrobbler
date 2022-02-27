@@ -5,12 +5,14 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"os"
+	"strings"
 )
 
-var api_key = "931461e741abc95aba1f6fe49fef306f"
-var api_sec = "b68203de996c0e0cad617ce124b64a20"
-var auth_token = "DNDCQ4Uva7kdPlk9uMeceYpOXFX-q_SY"
-var session_key = "mrYNC7UqH0nzgveyfDXFTQn-7AxgfjUl"
+var api_key = os.Args[2]
+var api_sec = os.Args[3]
+var auth_token = ""
+var session_key = ""
 
 type lastfm_token struct {
 	Token string `json:"token"`
@@ -43,7 +45,7 @@ func get_auth_token() {
 }
 
 func get_authorization() {
-	fmt.Println("Please go to http://www.last.fm/api/auth/?api_key=" + api_key + "&token=" + auth_token + " to authorize this app")
+	fmt.Println("\nPlease go to http://www.last.fm/api/auth/?api_key=" + api_key + "&token=" + auth_token + " to authorize this app")
 }
 
 func get_session() {
@@ -56,10 +58,14 @@ func get_session() {
 	if err != nil {
 		fmt.Println("Can not read response body")
 	}
+
 	var result lastfm_session
 	if err := json.Unmarshal(body, &result); err != nil { // Parse []byte to the go struct pointer
 		fmt.Println("Can not unmarshal JSON")
 	}
+	if strings.Contains(string(body), "error") {
+		fmt.Println("Session error. Check for authorization upon retry")
+		os.Exit(1)
+	}
 	session_key = result.Session.Key
-	fmt.Println(string(session_key))
 }
