@@ -15,8 +15,9 @@ Current playing artist and track collection happens from MusicCast server. The a
 ### Required interaction
 
 IP address of MusicCast server, LastFM API key pair generation and authorization.
-<https://www.last.fm/api/account/create>
-\n
+
+['test']<https://www.last.fm/api/account/create>
+
 <https://www.last.fm/api/scrobbling>
 
 ## Build
