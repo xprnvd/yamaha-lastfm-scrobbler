@@ -6,7 +6,7 @@ Reads DLNA playback by making request to MusicCast server, and sends scrobbing d
 
 ## Why
 
-I use plex for my music, and use it's last.fm integration for music discovery. For MusicCast, I use it's DLNA server, which does not have last.fm integration. So I need to integrate the DLNA player with my last.fm account.
+I use plex for my music, and use it's last.fm integration for music discovery. For MusicCast, I use it's DLNA server, which does not have last.fm integration. So I needed to integrate the DLNA player with my last.fm account to get all play data.
 
 ## How
 
