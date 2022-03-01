@@ -31,10 +31,9 @@ jobs:
         release-notes: 'Release notes'
         release-branch: main
         release-tag: 'v{{ env.GITHUB_RUN_ID }}'
-        release-assets:
-        - source: ./yms
-          name: yms
-          label: yms
-          content-type: application/octet-stream
-          file-name: yms
-          upload-condition: '${{ env.GITHUB_REF }}' = 'refs/tags/v{{ env.GITHUB_RUN_ID }}'
+        release-assets: |
+          - name: yms
+            path: yms
+            content-type: application/x-tar
+            file: yms
+            mode: 0644
