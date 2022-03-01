@@ -23,3 +23,15 @@ jobs:
 
     - name: Test
       run: go test -o yms -v ./...
+    
+    - name: Release
+      uses: actions/release@v2
+      with:
+        release-branch: main
+        release-name: yms
+        release-notes: |
+          - ci/cd release
+        tag-name: 'v${{ env.GITHUB_RUN_NUMBER }}'
+        tag-message: '${{ env.GITHUB_RUN_NUMBER }}'
+        assets: yms
+       
