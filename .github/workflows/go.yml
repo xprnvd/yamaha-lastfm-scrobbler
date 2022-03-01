@@ -25,13 +25,16 @@ jobs:
       run: go test -o yms -v ./...
     
     - name: Release
-      uses: actions/release@v2
+      uses: actions/release@v1
       with:
-        release-branch: main
         release-name: yms
-        release-notes: |
-          - ci/cd release
-        tag-name: 'v${{ env.GITHUB_RUN_NUMBER }}'
-        tag-message: '${{ env.GITHUB_RUN_NUMBER }}'
-        assets: yms
-       
+        release-notes: 'Release notes'
+        release-branch: main
+        release-tag: 'v{{ env.GITHUB_RUN_ID }}'
+        release-assets:
+        - source: ./yms
+          name: yms
+          label: yms
+          content-type: application/octet-stream
+          file-name: yms
+          upload-condition: '${{ env.GITHUB_REF }}' = 'refs/tags/v{{ env.GITHUB_RUN_ID }}'
