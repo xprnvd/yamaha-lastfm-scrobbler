@@ -25,7 +25,7 @@ jobs:
       run: go test -o yms -v ./...
     
     - name: Release
-      uses: actions/release@v1
+      uses: actions/release
       with:
         release-name: yms
         release-notes: 'Release notes'
